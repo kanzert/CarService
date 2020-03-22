@@ -3,34 +3,45 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 enum Brand {
-    MERCEDES("Mercedes"),
-    MAZDA("Mazda"),
-    NISSAN("Nissan"),
-    TOYOTA("Toyota"),
-    FERRARI("Ferrari"),
-    PORSCHE("Porsche"),
-    SUBARU("Subaru"),
-    LEXUS("Lexus"),
-    CHEVROLET("Chevrolet"),
-    FORD("Ford"),
-    SKODA("Skoda"),
-    HYUNDAI("Hyundai");
+    ASTON_MARTIN("aston martin"),
+    CHEVROLET("chevrolet"),
+    FERRARI("ferrari"),
+    FORD("ford"),
+    HYUNDAI("hyundai"),
+    LEXUS("lexus"),
+    MAZDA("mazda"),
+    MERCEDES("mercedes"),
+    NISSAN("nissan"),
+    PORSCHE("porsche"),
+    SKODA("skoda"),
+    SUBARU("subaru"),
+    TOYOTA("toyota");
 
-    public final String brand;
+    String brand;
 
     Brand(String brand) {
         this.brand = brand;
     }
+
+    public static boolean contains(String test) {
+        for (Brand c : Brand.values()) {
+            if (c.brand.equals(test.toLowerCase())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
 
 public class CarService {
     private String registrationPlate;
-    private Brand brand;
+    private String brand;
     private double mileage;
     private String mechanic;
     private double costOfRepair;
 
-    public CarService(String registrationPlate, Brand brand, double mileage, String mechanic, double costOfRepair) throws Exception {
+    public CarService(String registrationPlate, String brand, double mileage, String mechanic, double costOfRepair) throws Exception {
         setRegistrationPlate(registrationPlate);
         setBrand(brand);
         setMileage(mileage);
@@ -49,8 +60,12 @@ public class CarService {
         }
     }
 
-    public void setBrand(Brand brand) {
-        this.brand = brand;
+    public void setBrand(String brand) throws Exception {
+        if (Brand.contains(brand)) {
+            this.brand = brand;
+        } else {
+            throw new Exception();
+        }
     }
 
     public void setMileage(double mileage) {
@@ -70,7 +85,7 @@ public class CarService {
         return registrationPlate;
     }
 
-    public Brand getBrand() {
+    public String getBrand() {
         return brand;
     }
 
@@ -86,7 +101,6 @@ public class CarService {
         return costOfRepair;
     }
 
-    public static void main(String[] args) {
-        System.out.println("lololo");
+    public static void main(String[] args) throws Exception {
     }
 }
