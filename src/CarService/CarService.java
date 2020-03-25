@@ -32,7 +32,7 @@ enum Brand {
     }
 }
 
-public class CarService {
+public class CarService implements Comparable<CarService> {
     private String registrationPlate;
     private String brand;
     private double mileage;
@@ -45,6 +45,10 @@ public class CarService {
         setMileage(mileage);
         setMechanic(mechanic);
         setCostOfRepair(costOfRepair);
+    }
+
+    public CarService() {
+
     }
 
     public void setRegistrationPlate(String registrationPlate) throws Exception {
@@ -114,6 +118,23 @@ public class CarService {
         return costOfRepair;
     }
 
+    @Override
+    public String toString() {
+        return "Registration plate : " + registrationPlate + "\n" + "Brand : " + brand + "\n" + "Mileage " + mileage + "\n"
+                + "Mechanic : " + mechanic + "\n" + "Cost of repair : " + costOfRepair;
+    }
+
     public static void main(String[] args) throws Exception {
+    }
+
+    @Override
+    public int compareTo(CarService order) {
+        if (this.mileage == order.mileage) {
+            return 0;
+        } else if (this.mileage < order.mileage) {
+            return -1;
+        } else {
+            return 1;
+        }
     }
 }
