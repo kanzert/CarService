@@ -18,7 +18,6 @@ enum Brand {
     TOYOTA("toyota");
 
     String brand;
-
     Brand(String brand) {
         this.brand = brand;
     }
@@ -31,7 +30,6 @@ enum Brand {
         }
         return false;
     }
-
 }
 
 public class CarService {
@@ -68,16 +66,31 @@ public class CarService {
         }
     }
 
-    public void setMileage(double mileage) {
-        this.mileage = mileage;
+    public void setMileage(double mileage) throws Exception {
+        if (mileage > 0) {
+            this.mileage = mileage;
+        } else {
+            throw new Exception();
+        }
     }
 
-    public void setMechanic(String mechanic) {
-        this.mechanic = mechanic;
+    public void setMechanic(String mechanic) throws Exception {
+        String regex = "\\b[a-zA-Z]+\\b";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(mechanic);
+        if (matcher.matches()) {
+            this.mechanic = mechanic;
+        } else {
+            throw new Exception();
+        }
     }
 
-    public void setCostOfRepair(double costOfRepair) {
-        this.costOfRepair = costOfRepair;
+    public void setCostOfRepair(double costOfRepair) throws Exception {
+        if (costOfRepair > 0) {
+            this.costOfRepair = costOfRepair;
+        } else {
+            throw new Exception();
+        }
     }
 
 
