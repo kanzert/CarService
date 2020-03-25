@@ -62,30 +62,30 @@ public class CarService implements Comparable<CarService> {
         }
     }
 
-    public void setBrand(String brand) throws Exception {
+    public void setBrand(String brand) throws BaseAppException {
         if (Brand.contains(brand)) {
             this.brand = brand;
         } else {
-            throw new Exception();
+            throw new BaseAppException();
         }
     }
 
-    public void setMileage(double mileage) throws Exception {
+    public void setMileage(double mileage) throws BaseAppException {
         if (mileage > 0) {
             this.mileage = mileage;
         } else {
-            throw new Exception();
+            throw new BaseAppException();
         }
     }
 
-    public void setMechanic(String mechanic) throws Exception {
+    public void setMechanic(String mechanic) throws BaseAppException {
         String regex = "\\b[a-zA-Z]+\\b";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(mechanic);
         if (matcher.matches()) {
             this.mechanic = mechanic;
         } else {
-            throw new Exception();
+            throw new BaseAppException();
         }
     }
 

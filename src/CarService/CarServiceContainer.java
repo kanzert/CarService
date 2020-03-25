@@ -15,12 +15,12 @@ public class CarServiceContainer {
             String[] headersInFile = lines.get(0).split(";");
 
             if (carServiceHeaders.length != headersInFile.length) {
-                throw new Exception();
+                throw new BaseAppException("Headers numbers doesn't match.");
             }
 
             for (int i = 0; i < carServiceHeaders.length; i++) {
                 if (!carServiceHeaders[i].equals(headersInFile[i])) {
-                    throw new Exception();
+                    throw new BaseAppException("Headers doesn't match");
                 }
             }
 
@@ -38,8 +38,6 @@ public class CarServiceContainer {
             }
 
         } catch (IOException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
             e.printStackTrace();
         }
     }
