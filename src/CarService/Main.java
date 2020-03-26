@@ -1,12 +1,14 @@
 package CarService;
 
 public class Main {
-
     public static void main(String[] args) {
         Log.setup();
-    }
-
-    public static void func() throws BaseAppException {
-
+        CarServiceContainer carServiceContainer = new CarServiceContainer();
+        try {
+            carServiceContainer.setRecords("dataSet.csv");
+            carServiceContainer.serializeJSON();
+        } catch (BaseAppException e) {
+            e.log(true);
+        }
     }
 }

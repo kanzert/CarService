@@ -1,0 +1,23 @@
+[
+  {
+    "registrationPlate: "JJ4789AZ,
+    "brand: "Ford,
+    "mileage: "147.59,
+    "mechanic: "Hero,
+    "costOfRepair: "269.0
+  },
+  {
+    "registrationPlate: "AH2564AS,
+    "brand: "Toyota,
+    "mileage: "245.0,
+    "mechanic: "Vasya,
+    "costOfRepair: "650.0
+  },
+  {
+    "registrationPlate: "BH1835AA,
+    "brand: "Lexus,
+    "mileage: "368.0,
+    "mechanic: "Oleks,
+    "costOfRepair: "720.0
+  }
+]
