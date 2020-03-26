@@ -2,36 +2,6 @@ package CarService;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-enum Brand {
-    ASTON_MARTIN("aston martin"),
-    CHEVROLET("chevrolet"),
-    FERRARI("ferrari"),
-    FORD("ford"),
-    HYUNDAI("hyundai"),
-    LEXUS("lexus"),
-    MAZDA("mazda"),
-    MERCEDES("mercedes"),
-    NISSAN("nissan"),
-    PORSCHE("porsche"),
-    SKODA("skoda"),
-    SUBARU("subaru"),
-    TOYOTA("toyota");
-
-    String brand;
-    Brand(String brand) {
-        this.brand = brand;
-    }
-
-    public static boolean contains(String test) {
-        for (Brand c : Brand.values()) {
-            if (c.brand.equals(test.toLowerCase())) {
-                return true;
-            }
-        }
-        return false;
-    }
-}
-
 public class CarService implements Comparable<CarService> {
     private String registrationPlate;
     private String brand;
@@ -47,18 +17,16 @@ public class CarService implements Comparable<CarService> {
         setCostOfRepair(costOfRepair);
     }
 
-    public CarService() {
+    public CarService() {}
 
-    }
-
-    public void setRegistrationPlate(String registrationPlate) throws Exception {
+    public void setRegistrationPlate(String registrationPlate) throws BaseAppException {
         String regex = "\\b[a-zA-Z]{2}\\d{4}[a-zA-Z]{2}\\b";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(registrationPlate);
         if (matcher.matches()) {
             this.registrationPlate = registrationPlate;
         } else {
-            throw new Exception();
+            throw new BaseAppException("Wrong registration plate");
         }
     }
 
@@ -66,7 +34,7 @@ public class CarService implements Comparable<CarService> {
         if (Brand.contains(brand)) {
             this.brand = brand;
         } else {
-            throw new BaseAppException();
+            throw new BaseAppException("Wrong brand");
         }
     }
 
@@ -74,7 +42,7 @@ public class CarService implements Comparable<CarService> {
         if (mileage > 0) {
             this.mileage = mileage;
         } else {
-            throw new BaseAppException();
+            throw new BaseAppException("Wrong milleage");
         }
     }
 
@@ -85,15 +53,15 @@ public class CarService implements Comparable<CarService> {
         if (matcher.matches()) {
             this.mechanic = mechanic;
         } else {
-            throw new BaseAppException();
+            throw new BaseAppException("Wrong mechanic name");
         }
     }
 
-    public void setCostOfRepair(double costOfRepair) throws Exception {
+    public void setCostOfRepair(double costOfRepair) throws BaseAppException {
         if (costOfRepair > 0) {
             this.costOfRepair = costOfRepair;
         } else {
-            throw new Exception();
+            throw new BaseAppException("Wrong cost of repair");
         }
     }
 
