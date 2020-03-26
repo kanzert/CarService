@@ -56,11 +56,11 @@ public class CarServiceContainer {
             for(CarService service : records) {
 
                 writer.write("  {\n");
-                writer.write("    \"registrationPlate: \"" + service.getRegistrationPlate() + ",\n");
-                writer.write("    \"brand: \"" + service.getBrand() + ",\n");
-                writer.write("    \"mileage: \"" + service.getMileage() + ",\n");
-                writer.write("    \"mechanic: \"" + service.getMechanic() + ",\n");
-                writer.write("    \"costOfRepair: \"" + service.getCostOfRepair() + "\n");
+                writer.write("    \"registrationPlate\": " + "\"" + service.getRegistrationPlate() + "\"" + ",\n");
+                writer.write("    \"brand\": " + "\""  + service.getBrand() + "\""  + ",\n");
+                writer.write("    \"mileage\": " + "\""  + service.getMileage() + "\""  + ",\n");
+                writer.write("    \"mechanic\": " + "\""  + service.getMechanic() + "\""  + ",\n");
+                writer.write("    \"costOfRepair\": " + "\""  + service.getCostOfRepair() + "\""  + "\n");
                 if (counter != records.size() - 1) {
                     writer.write("  },\n");
                 } else {
